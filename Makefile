@@ -4,7 +4,7 @@ OBJECT = *.o
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(CFILE)
 	cc -Wall -Wextra -Werror -c $(CFILE) && ar rcs $(NAME) $(OBJECT)
 
 clean:
