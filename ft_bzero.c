@@ -6,11 +6,11 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 09:23:33 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/02 09:27:37 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/02 14:43:59 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, int n)
+void	ft_bzero(void *s, unsigned int n)
 {
 	char	*cs;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 19:55:58 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/02 09:26:37 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/03 10:35:25 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_strlen(const char *s)
 	int	length;
 
 	length = 0;
-	while (s != '\0')
+	while (s[length] != '\0')
 	{
 		++length;
 	}
