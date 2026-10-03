@@ -6,3 +6,4 @@ ex00/*.o
 ex01/srcs/
 ex01/includes/
 ex01/libft.a
+libftTester/

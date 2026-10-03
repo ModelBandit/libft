@@ -6,15 +6,15 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 15:27:27 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 09:02:46 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/03 15:38:14 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	char	*ps1;
-	char	*ps2;
-	int		i;
+	char			*ps1;
+	char			*ps2;
+	unsigned int	i;
 
 	ps1 = (char *)s1;
 	ps2 = (char *)s2;

@@ -1,18 +1,16 @@
-NAME = libft.h
-AAA = a.out
+NAME = libft.a
 CFILE = *.c
 OBJECT = *.o
-ARCHIVE = *.a
 
-all: $(AAA)
+all: $(NAME)
 
-$(AAA):
-	cc asd.c
+$(NAME):
+	cc -Wall -Wextra -Werror -c $(CFILE) && ar rcs $(NAME) $(OBJECT)
 
 clean:
 	rm -f $(OBJECT)
 
 fclean: clean
-	rm -f $(ARCHIVE)
+	rm -f $(NAME)
 
 re: fclean all

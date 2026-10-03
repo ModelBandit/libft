@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 10:00:51 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 10:01:44 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/03 15:43:32 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@ static unsigned int	ft_strlen(char *str);
 
 char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {
-	unsigned int	l_len;
 	unsigned int	i;
 	unsigned int	j;
 
@@ -30,8 +29,8 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 			{
 				++j;
 			}
-			if (little[j] == '\0' && j == ft_strlen(little))
-				return (&(big[i]));
+			if (little[j] == '\0' && j == ft_strlen((char *)little))
+				return (&(((char *)big)[i]));
 		}
 		++i;
 	}
