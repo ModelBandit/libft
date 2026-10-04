@@ -6,20 +6,39 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 14:43:36 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/02 14:43:54 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/04 14:58:34 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+static unsigned int	ft_strlen(char *str);
+
 char	*ft_strchr(const char *s, int c)
 {
-	char	*sp;
+	char			*sp;
+	unsigned int	i;
+	unsigned int	size;
 
 	sp = (char *)s;
-	while (*sp != '\0')
+	i = 0;
+	size = ft_strlen(sp) + 1;
+	while (i < size)
 	{
-		if (*sp == c)
-			return (sp);
-		++sp;
+		if (sp[i] == (unsigned char)c)
+			return (&(sp[i]));
+		++i;
 	}
-	return (sp);
+	return (0);
+}
+
+static unsigned int	ft_strlen(char *str)
+{
+	unsigned int	len;
+
+	len = 0;
+	while (*str != '\0')
+	{
+		++len;
+		++str;
+	}
+	return (len);
 }
