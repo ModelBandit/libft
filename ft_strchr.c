@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 14:43:36 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/04 14:58:34 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/05 14:14:00 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strchr(const char *s, int c)
 
 	sp = (char *)s;
 	i = 0;
-	size = ft_strlen(sp) + 1;
-	while (i < size)
+	size = ft_strlen(sp);
+	while (i <= size)
 	{
 		if (sp[i] == (unsigned char)c)
 			return (&(sp[i]));
