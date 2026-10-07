@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 11:46:55 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/06 14:49:51 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/07 14:11:50 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
-	if (nmemb > __SIZE_MAX__ / size)
+	else if (nmemb > (size_t)-1 / size)
 		return (0);
 	c_ptr = (char *)malloc(nmemb * size);
 	if (c_ptr == NULL)
