@@ -6,11 +6,13 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:12:37 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:59:49 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 09:05:33 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dst, const void *src, unsigned int n)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	char			str[100];
 	char			*c_dst;

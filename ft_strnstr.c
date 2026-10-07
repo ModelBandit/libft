@@ -6,12 +6,55 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 10:00:51 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:43:32 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/07 10:38:27 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	ft_strlen(char *str);
+#include "libft.h"
 
+static int	check_string(const char *big, const char *little, size_t len);
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	b_len;
+	size_t	l_len;
+
+	i = 0;
+	b_len = ft_strlen(big);
+	l_len = ft_strlen(little);
+	if (l_len <= 0)
+		return ((char *)big);
+	else if (len <= 0 || b_len <= 0)
+		return (NULL);
+	while (i < len && i <= b_len)
+	{
+		if (big[i] == little[0])
+		{
+			if (check_string(&big[i], little, len - i) > 0)
+				return ((char *)(&(big[i])));
+		}
+		++i;
+	}
+	return (NULL);
+}
+
+static int	check_string(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len && big[i] == little[i] && big[i] != '\0'
+		&& little[i] != '\0')
+	{
+		++i;
+	}
+	if (i <= len && little[i] == '\0')
+		return (1);
+	return (0);
+}
+
+/*
 char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {
 	unsigned int	i;
@@ -24,7 +67,8 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 		if (big[i] == little[0])
 		{
 			j = 0;
-			while (big[i + j] == little[j] && big[i + j] != '\0'
+			while (big[i + j] == little[j]
+				&& big[i + j] != '\0'
 				&& little[j] != '\0')
 			{
 				++j;
@@ -37,15 +81,4 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 	return (0);
 }
 
-static unsigned int	ft_strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (*str != '\0')
-	{
-		++len;
-		++str;
-	}
-	return (len);
-}
+*/

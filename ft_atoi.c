@@ -6,22 +6,24 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 10:49:52 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:59:19 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 10:36:57 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static int	check_tokens(char c, char *tokens);
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nptr)
 {
-	int	oper;
-	int	num;
+	char	*str;
+	int		oper;
+	int		num;
 
+	str = (char *)nptr;
 	oper = 1;
 	num = 0;
 	while (check_tokens(*str, " \t\n\v\f\r") > 0)
 		++str;
-	while (check_tokens(*str, "+-") > 0)
+	if (check_tokens(*str, "+-") > 0)
 	{
 		if (*str == '-')
 			oper = oper * -1;

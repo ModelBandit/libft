@@ -6,17 +6,17 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 11:34:25 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/04 18:35:56 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 10:36:40 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	ft_strlen(char *str);
+#include "libft.h"
 
-unsigned int	ft_strlcpy(char *dst, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	max;
-	unsigned int	s_len;
+	size_t	i;
+	size_t	max;
+	size_t	s_len;
 
 	if (size <= 0)
 		return (ft_strlen(src));
@@ -30,17 +30,4 @@ unsigned int	ft_strlcpy(char *dst, char *src, unsigned int size)
 	}
 	dst[i] = '\0';
 	return (s_len);
-}
-
-static unsigned int	ft_strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (*str != '\0')
-	{
-		++len;
-		++str;
-	}
-	return (len);
 }

@@ -6,11 +6,13 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 10:21:50 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:33:46 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 09:05:04 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, unsigned int n)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char			*c_dst;
 	char			*c_src;

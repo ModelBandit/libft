@@ -6,14 +6,16 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 17:08:36 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/04 15:01:50 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 10:38:47 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, unsigned int n)
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char			*sp;
-	unsigned int	i;
+	char	*sp;
+	size_t	i;
 
 	if (n <= 0)
 		return (0);

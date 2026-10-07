@@ -6,29 +6,27 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:12:38 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:12:45 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 10:38:19 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	ft_strlen(char *str);
+#include "libft.h"
 
-unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	d_len;
-	unsigned int	s_len;
-	unsigned int	max;
+	size_t	i;
+	size_t	j;
+	size_t	d_len;
+	size_t	s_len;
+	size_t	max;
 
-	i = 0;
-	j = 0;
 	d_len = ft_strlen(dst);
 	s_len = ft_strlen((char *)src);
+	i = d_len;
+	j = 0;
 	max = size - 1;
 	if (size <= 0)
 		return (s_len);
-	while (dst[i] != '\0')
-		++i;
 	while (i < max && src[j] != '\0')
 	{
 		dst[i] = src[j];
@@ -36,18 +34,8 @@ unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size)
 		++j;
 	}
 	dst[i] = '\0';
-	return (d_len + s_len);
-}
-
-static unsigned int	ft_strlen(char *str)
-{
-	unsigned int	len;
-
-	len = 0;
-	while (*str != '\0')
-	{
-		++len;
-		++str;
-	}
-	return (len);
+	if (size < d_len)
+		return (size + s_len);
+	else
+		return (d_len + s_len);
 }

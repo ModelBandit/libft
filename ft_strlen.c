@@ -6,13 +6,15 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 19:55:58 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 10:35:25 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/06 09:43:06 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int	length;
+	size_t	length;
 
 	length = 0;
 	while (s[length] != '\0')
