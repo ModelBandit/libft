@@ -86,6 +86,13 @@ MSVC의 경우 윈도우 스타일로 불린다함.(나도 안봄)
 위에 작업물을 만들기 위해서는 해당 작업이 필요하기에
 인터페이스 얻어 이식성이 좋다는건 여기서 나오는 말.
 
+#### const type* const v
+- 보통 const type v로 쓰는데 type const v도 가능
+- 단순 묘기는 아니고 const type* const v도 가능함.
+ 즉, 변수 선언에 사용되던 키워드에 1:1 대응한다는 것.
+ const 변수를 조작하려고 형변환한건 어찌보면 당연했던 것.
+- ex1. js의 const가 type* const v와 비슷한 느낌. v의 위치 수정은 안되나 내부 값 수정은 가능
+- ex2. const type* const v로 모든 수정 봉인 가능
 
 # 끝난거
 ## Makefile 작성 관련
