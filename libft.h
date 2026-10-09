@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:58:31 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/08 15:35:23 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/09 15:47:05 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <stdint.h>
 # include <stdlib.h>
 
 int		ft_atoi(const char *str);

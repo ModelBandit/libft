@@ -16,7 +16,7 @@ clean:
 	rm -f $(OBJECT)
 
 fclean: clean
-	rm -f $(NAME) *.out
+	rm -f $(NAME) *.out *.test
 
 re: fclean all
 
