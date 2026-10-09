@@ -6,13 +6,11 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:21:22 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/09 16:44:52 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/09 16:47:24 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-#include <stdio.h>
 
 static char	*fill_itoa(char *n_str, int len, int n);
 
@@ -44,19 +42,19 @@ char	*ft_itoa(int n)
 static char	*fill_itoa(char *n_str, int len, int n)
 {
 	n_str = ft_calloc(sizeof(char), len + 1);
-    if(n == INT_MIN)
-    {
+	if (n == INT_MIN)
+	{
 		n_str[0] = '-';
 		n_str[len - 1] = '0' + (INT_MAX % 10) + 1;
 		n = n / 10;
-        n *= -1;
+		n *= -1;
 		--len;
-    }
+	}
 	else if (n < 0)
-    {
+	{
 		n_str[0] = '-';
-        n *= -1;
-    }
+		n *= -1;
+	}
 	while (n != 0)
 	{
 		n_str[len - 1] = '0' + (n % 10);
