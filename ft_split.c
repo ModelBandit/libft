@@ -6,16 +6,17 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 15:30:25 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 16:00:16 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*build_set_strtrim(char const *s, char c, size_t *c_count);
-static char	**set_arr(char **s_arr, char const *s, char c, size_t len);
-static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
-				size_t str_len);
+static char		*build_set_strtrim(char const *s, char c, size_t *c_count);
+static size_t	get_gap(const char **s, int c);
+static char		**set_arr(char **s_arr, char const *s, char c, size_t len);
+static char		*fill_str(char **s_arr, char const *s, size_t cur_count,
+					size_t str_len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -55,7 +56,7 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 		s_ptr_copy = s_ptr;
 		while (s_ptr_copy != NULL && *s_ptr_copy != '\0')
 		{
-			++*(c_count);
+			++(*c_count);
 			while (*s_ptr_copy == c)
 				++s_ptr_copy;
 			s_ptr_copy = ft_strchr(s_ptr_copy, c);
@@ -64,27 +65,35 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 	return ((char *)s_ptr);
 }
 
+static size_t	get_gap(const char **s, int c)
+{
+	size_t	str_len;
+	char	*end_ptr;
+
+	str_len = 0;
+	end_ptr = ft_strchr((*s), c);
+	while (end_ptr != NULL && *(*s) != c)
+	{
+		end_ptr = ft_strchr((*s), c);
+		++(*s);
+	}
+	if (end_ptr == NULL)
+		end_ptr = ft_strchr((*s), '\0');
+	while (&((*s)[str_len]) != &(end_ptr[0]))
+		++str_len;
+	return (str_len);
+}
+
 static char	**set_arr(char **s_arr, char const *s, char c, size_t len)
 {
-	char	*end_ptr;
 	size_t	cur_count;
 	size_t	str_len;
 
-	end_ptr = NULL;
 	cur_count = 0;
+	str_len = 0;
 	while (cur_count < len)
 	{
-		end_ptr = ft_strchr(s, c);
-		if (end_ptr == NULL)
-			end_ptr = ft_strchr(s, '\0');
-		str_len = 0;
-		if (s[str_len] == c)
-		{
-			s = end_ptr + 1;
-			continue ;
-		}
-		while (&(s[str_len]) != &end_ptr[0])
-			++str_len;
+		str_len = get_gap(&s, c);
 		s = fill_str(s_arr, s, cur_count, str_len + 1);
 		if (s == NULL)
 			return (NULL);
