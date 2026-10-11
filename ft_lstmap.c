@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:55:12 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/10 18:12:41 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 16:38:40 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new_lst->next = ft_lstmap(cur->next, f, del);
 		if (new_lst->next == NULL)
 		{
-			ft_lstdelone(cur, del);
+			ft_lstdelone(new_lst, del);
+			del(new_lst);
 			return (NULL);
 		}
 	}

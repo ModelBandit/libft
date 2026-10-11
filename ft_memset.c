@@ -6,15 +6,17 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 19:56:21 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:46:41 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 16:24:19 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, int n)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	uc;
 	char			*cs;
-	int				i;
+	size_t			i;
 
 	uc = (unsigned char)c;
 	cs = (char *)s;

@@ -12,7 +12,7 @@ $(NAME): $(OBJECT)
 	ar rcs $(NAME) $(OBJECT)
 	
 %.o: %.c libft.h
-	$(CC) $(WARN) -c $(CFILE)
+	$(CC) $(WARN) -c $< -o $@
 
 clean:
 	rm -f $(OBJECT)
