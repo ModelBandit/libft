@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 16:00:16 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 16:07:26 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ static size_t	get_gap(const char **s, int c)
 
 	str_len = 0;
 	end_ptr = ft_strchr((*s), c);
-	while (end_ptr != NULL && *(*s) != c)
+	while (end_ptr != NULL && *(*s) == c)
 	{
-		end_ptr = ft_strchr((*s), c);
 		++(*s);
+		end_ptr = ft_strchr((*s), c);
 	}
 	if (end_ptr == NULL)
 		end_ptr = ft_strchr((*s), '\0');
