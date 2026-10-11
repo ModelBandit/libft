@@ -5,20 +5,20 @@ OBJECT = $(CFILE:.c=.o)
 
 CC = clang
 WARN = -Wall -Wextra -Werror
-SOLO = filename
 
 all: $(NAME)
 
-$(NAME): $(CFILE)
-	$(CC) $(WARN) -c $(CFILE) && ar rcs $(NAME) $(OBJECT)
+$(NAME): $(OBJECT)
+	ar rcs $(NAME) $(OBJECT)
+	
+%.o: %.c libft.h
+	$(CC) $(WARN) -c $(CFILE)
 
 clean:
 	rm -f $(OBJECT)
 
 fclean: clean
-	rm -f $(NAME) *.out *.test
+	rm -f $(NAME)
 
 re: fclean all
 
-solo: $(NAME)
-	$(CC) $(WARN) $(SOLO) $(NAME)

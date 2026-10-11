@@ -35,16 +35,14 @@
 - `(unsigned char)a - (unsigned char)b`와 같은 연산에서도 캐스팅 이후 실제 산술 연산을 수행할 때 정수 승격이 발생한다.
 - signed 정수형과 unsigned 정수형을 함께 연산하거나 비교할 경우 usual arithmetic conversions에 의해 예상하지 못한 타입 변환이 발생할 수 있다.
 - `size_t`와 같은 unsigned 정수형에서는 `0 - 1`이나 `(size_t)-1`과 같은 연산의 결과가 큰 양수로 표현될 수 있다.
-- +
 
 #### char와 unsigned char
 
 - `memcmp`, `memchr` 등의 메모리 관련 함수에서는 메모리의 각 바이트를 `unsigned char` 값으로 취급한다.
-- `char`가 signed인 환경— 포인터와 동적 메모리를 실제 자료구조로 확장에서는 `0x80` 이상의 바이트가 음수로 해석될 수 있으므로 비교 결과에 영향을 줄 수 있다.
+- `char`가 signed인 환경에서는 `0x80` 이상의 바이트가 음수로 해석될 수 있으므로 비교 결과에 영향을 줄 수 있다.
 - `memchr`의 검색값 역시 `unsigned char`에 해당하는 값으로 변환하여 비교한다.
 
 #### static, extern과 Linkage
-— 포인터와 동적 메모리를 실제 자료구조로 확장
 - 파일 범위에서 선언된 식별자가 모두 동일한 방식으로 외부에 노출되는 것은 아니다.
 - `static`을 사용하면 internal linkage를 가지므로 해당 translation unit 내부에서만 접근할 수 있다.
 - external linkage를 가지는 심볼은 다른 translation unit에서도 참조할 수 있다.
@@ -70,11 +68,6 @@
 - `memcpy`는 source와 destination 영역이 겹치지 않는 경우의 메모리 복사를 수행한다.
 - `memmove`는 메모리 영역이 겹치는 경우에도 원본 데이터가 손상되지 않도록 복사한다.
 - 같은 동작을 목적으로 하나 지향하는 바의 차이에서 구분됨. dst랑 src가 겹쳐도 되냐 안되냐의 차이로 갈라져서 쌍둥이 탄생
-
-#### ctype.h의 판별방식
-
-- is*형태로 불러내고 리틀에디안식으로 12비트를 사용하여 문자별로 속성을 매핑하여 비트테이블을 구성해 둠.
-- ex) isalpha()의 경우, 참일 때 1024를 반환함.
 
 #### 구현할 수 있어도 가급적 헤더를 쓰는 이유
 찾기 시작한 원인은 size_t

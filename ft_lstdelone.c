@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:56:11 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/10 17:15:57 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 15:15:24 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-    del(lst->content);
-    lst->content = NULL;
+	del(lst->content);
+	lst->content = NULL;
 	del(lst);
 }

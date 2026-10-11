@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:21:22 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/09 16:47:24 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 15:15:39 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_itoa(int n)
 	}
 	return (fill_itoa(n_str, str_len, n));
 }
-// -2147483648
+
 static char	*fill_itoa(char *n_str, int len, int n)
 {
 	n_str = ft_calloc(sizeof(char), len + 1);

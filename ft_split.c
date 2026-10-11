@@ -6,17 +6,16 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/09 15:38:54 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/11 15:30:25 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*build_set_strtrim(char const *s, char c);
-static size_t	count_ptr(char *s, char c);
-static char		**set_arr(char **s_arr, char const *s, char c, size_t len);
-static char		*fill_str(char **s_arr, char const *s, size_t cur_count,
-					size_t str_len);
+static char	*build_set_strtrim(char const *s, char c, size_t *c_count);
+static char	**set_arr(char **s_arr, char const *s, char c, size_t len);
+static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
+				size_t str_len);
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,16 +23,8 @@ char	**ft_split(char const *s, char c)
 	char	*s_ptr;
 	size_t	c_count;
 
-	s_ptr = build_set_strtrim(s, c);
 	c_count = 0;
-	if (ft_strlen(s_ptr) == 0)
-		c_count = 0;
-	else
-		c_count = count_ptr(s_ptr, c);
-	// else if (s_ptr != NULL
-	//     && *s_ptr != '\0')
-	// else
-	// 	c_count = 1;
+	s_ptr = build_set_strtrim(s, c, &c_count);
 	ptr_arr = (char **)malloc((c_count + 1) * sizeof(char *));
 	if (ptr_arr == NULL)
 		return (NULL);
@@ -47,33 +38,30 @@ char	**ft_split(char const *s, char c)
 	return (ptr_arr);
 }
 
-static char	*build_set_strtrim(char const *s, char c)
+static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 {
 	char		*c_str;
 	char const	*s_ptr;
+	char const	*s_ptr_copy;
 
 	c_str = (char *)ft_calloc(2, sizeof(char));
 	c_str[0] = c;
 	s_ptr = ft_strtrim(s, (const char *)c_str);
 	free(c_str);
-	return ((char *)s_ptr);
-}
-
-static size_t	count_ptr(char *s, char c)
-{
-	char const	*s_ptr;
-	size_t		c_count;
-
-	s_ptr = s;
-	c_count = 0;
-	while (s_ptr != NULL && *s_ptr != '\0')
+	if (ft_strlen(s_ptr) == 0)
+		*c_count = 0;
+	else
 	{
-		++c_count;
-		while (*s_ptr == c)
-			++s_ptr;
-		s_ptr = ft_strchr(s_ptr, c);
+		s_ptr_copy = s_ptr;
+		while (s_ptr_copy != NULL && *s_ptr_copy != '\0')
+		{
+			++*(c_count);
+			while (*s_ptr_copy == c)
+				++s_ptr_copy;
+			s_ptr_copy = ft_strchr(s_ptr_copy, c);
+		}
 	}
-	return (c_count);
+	return ((char *)s_ptr);
 }
 
 static char	**set_arr(char **s_arr, char const *s, char c, size_t len)
@@ -88,7 +76,7 @@ static char	**set_arr(char **s_arr, char const *s, char c, size_t len)
 	{
 		end_ptr = ft_strchr(s, c);
 		if (end_ptr == NULL)
-			end_ptr = ft_strchr(s, '\0'); //
+			end_ptr = ft_strchr(s, '\0');
 		str_len = 0;
 		if (s[str_len] == c)
 		{
