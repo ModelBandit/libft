@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:12:38 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 20:27:00 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 16:49:43 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		++i;
 		++j;
 	}
-	if(i < size)
+	if (i < size)
 		dst[i] = '\0';
 	return (d_len + s_len);
 }
