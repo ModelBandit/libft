@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 16:07:26 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 18:09:52 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 	char const	*s_ptr_copy;
 
 	c_str = (char *)ft_calloc(2, sizeof(char));
+	if(c_str == NULL)
+		return NULL;
 	c_str[0] = c;
 	s_ptr = ft_strtrim(s, (const char *)c_str);
 	free(c_str);

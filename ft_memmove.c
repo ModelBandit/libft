@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:12:37 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 17:42:36 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 18:07:53 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ static void	set_from_tail(char **dst, char **src, size_t len)
 {
 	size_t	i;
 
-	i = len - 1;
+	i = len;
+	if (len != 0)
+		i -= 1;
 	while (i > 0)
 	{
 		(*dst)[i] = (*src)[i];

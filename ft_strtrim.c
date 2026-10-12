@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 18:11:06 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 17:28:09 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 18:07:28 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = unsign_len(s1);
 	while (ns_start < i + 1 && check_tokens(s1[i], (char *)set))
 		--i;
-	ns_end = i + 1;
+	if (i == 0)
+		ns_end = i;
+	else
+		ns_end = i + 1;
 	i = 0;
 	new_str = my_alloc(ns_start, ns_end);
 	if (new_str == NULL)
 		return (NULL);
-	while (i < ns_end - ns_start)
-	{
-		new_str[i] = s1[ns_start + i];
-		++i;
-	}
-	new_str[i] = '\0';
+	ft_strlcpy(new_str, &(s1[ns_start + i]), ns_end - ns_start + 1);
 	return (new_str);
 }
 
@@ -68,8 +66,8 @@ static int	check_tokens(char c, char *tokens)
 static char	*my_alloc(size_t ns_start, size_t ns_end)
 {
 	if (ns_end > ns_start)
-		return ((char *)malloc(ns_end - ns_start + 1));
-	return ((char *)malloc(1));
+		return ((char *)ft_calloc(sizeof(char), ns_end - ns_start + 1));
+	return ((char *)ft_calloc(sizeof(char), 1));
 }
 
 // int main()

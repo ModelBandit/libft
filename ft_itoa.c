@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:21:22 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/11 15:15:39 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 17:44:45 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_itoa(int n)
 	if (n == 0)
 	{
 		n_str = ft_calloc(sizeof(char), 2);
+		if (n_str == NULL)
+			return (NULL);
 		n_str[0] = '0';
 		return (n_str);
 	}
@@ -42,6 +44,8 @@ char	*ft_itoa(int n)
 static char	*fill_itoa(char *n_str, int len, int n)
 {
 	n_str = ft_calloc(sizeof(char), len + 1);
+	if (n_str == NULL)
+		return (NULL);
 	if (n == INT_MIN)
 	{
 		n_str[0] = '-';

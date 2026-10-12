@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:12:38 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 16:49:43 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/12 17:03:54 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static size_t	my_strnlen(char *dst, size_t size)
 	size_t	i;
 
 	i = 0;
-	while (i <= size)
+	while (i < size)
 	{
 		if (dst[i] == '\0')
 			return (i);
