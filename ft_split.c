@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 11:53:08 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 12:14:09 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_split(char const *s, char c)
 	char	*s_ptr;
 	size_t	c_count;
 
-	c_count = -1;
+	c_count = 0;
 	s_ptr = build_set_strtrim(s, c, &c_count);
 	if (s_ptr == NULL)
 		return (NULL);
@@ -45,14 +45,12 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 {
 	char		*c_str;
 	char const	*s_ptr;
-	char const	*s_ptr_copy;
 
 	c_str = (char *)ft_calloc(2, sizeof(char));
 	if (c_str == NULL)
 		return (NULL);
 	c_str[0] = c;
 	s_ptr = ft_strtrim(s, (const char *)c_str);
-	s_ptr_copy = NULL;
 	free(c_str);
 	if (s_ptr == NULL)
 		return (NULL);
@@ -60,13 +58,13 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 		*c_count = 0;
 	else
 	{
-		s_ptr_copy = s_ptr;
-		while (s_ptr_copy != NULL && *s_ptr_copy != '\0')
+		c_str = (char *)s_ptr;
+		while (c_str != NULL && *c_str != '\0')
 		{
 			++(*c_count);
-			while (*s_ptr_copy == c)
-				++s_ptr_copy;
-			s_ptr_copy = ft_strchr(s_ptr_copy, c);
+			while (*c_str == c)
+				++c_str;
+			c_str = ft_strchr(c_str, c);
 		}
 	}
 	return ((char *)s_ptr);
@@ -141,8 +139,8 @@ static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
 
 // int	main(void)
 // {
-// 	char s[] = "--1-2--3---4----5-----42";
-// 	char **tab = ft_split(s, '-');
+// 	char s[] = "  tripouille  42  ";
+// 	char **tab = ft_split(s, ' ');
 // 	int i = 0;
 
 // 	while (tab[i] != NULL)
@@ -154,3 +152,87 @@ static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
 // 	free(tab[i]);
 // 	free(tab);
 // }
+
+/*
+
+void	nothing(void)
+{
+	char	**ptr_arr;
+	char	*s_ptr;
+	char	*c_str;
+	size_t	c_count;
+	size_t	cur_count;
+	size_t	str_len;
+		size_t	i;
+
+	c_count = -1;
+	c_str = (char *)ft_calloc(2, sizeof(char));
+	if (c_str == NULL)
+		return (NULL);
+	c_str[0] = c;
+	s_ptr = ft_strtrim(s, (const char *)c_str);
+	s_ptr_copy = NULL;
+	free(c_str);
+	if (s_ptr == NULL)
+		return (NULL);
+	if (ft_strlen(s_ptr) == 0)
+		*c_count = 0;
+	else
+	{
+		s_ptr_copy = s_ptr;
+		while (s_ptr_copy != NULL && *s_ptr_copy != '\0')
+		{
+			++(*c_count);
+			while (*s_ptr_copy == c)
+				++s_ptr_copy;
+			s_ptr_copy = ft_strchr(s_ptr_copy, c);
+		}
+	}
+	return ((char *)s_ptr);
+	if (s_ptr == NULL)
+		return (NULL);
+	ptr_arr = (char **)malloc((c_count + 1) * sizeof(char *));
+	if (ptr_arr == NULL)
+		return (NULL);
+	if (set_arr(ptr_arr, s_ptr, c, c_count) == NULL)
+	{
+		free(ptr_arr);
+		return (NULL);
+	}
+	cur_count = 0;
+	str_len = 0;
+	while (cur_count < len)
+	{
+		str_len = get_gap(&s, c);
+		s = fill_str(s_arr, s, cur_count, str_len + 1);
+		i = 0;
+		if (str_len == 0)
+		{
+			s_arr[cur_count] = NULL;
+			return ((char *)&(s[str_len]));
+		}
+		s_arr[cur_count] = (char *)malloc(str_len);
+		if (s_arr[cur_count] == NULL)
+		{
+			while (i < cur_count)
+			{
+				free(s_arr[i]);
+				++i;
+			}
+			return (NULL);
+		}
+		ft_strlcpy(s_arr[cur_count], s, str_len);
+		return ((char *)&(s[str_len - 1]));
+			if (s == NULL)
+				return (NULL);
+			else if (*s != '\0')
+				++s;
+			++cur_count;
+		}
+		return (s_arr);
+	ptr_arr[c_count] = NULL;
+	free(s_ptr);
+	return (ptr_arr);
+}
+
+*/
