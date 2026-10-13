@@ -12,7 +12,8 @@
 
 ### Resources
 * man function
-* glibc 미러 저장소 - https://github.com/bminor/glibc
+* glibc 저장소 - https://github.com/bminor/glibc
+* bsd 저장소 - https://github.com/openbsd
 * 각종 블로그 포스트
 
 #### AI 사용

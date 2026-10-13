@@ -3,7 +3,7 @@ CFILE = ft_atoi.c ft_isdigit.c ft_memset.c ft_strnstr.c ft_bzero.c ft_isprint.c 
 
 OBJECT = $(CFILE:.c=.o)
 
-CC = clang
+CC = cc
 WARN = -Wall -Wextra -Werror
 
 all: $(NAME)
