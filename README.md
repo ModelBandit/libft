@@ -1,6 +1,6 @@
 ## *This project has been created as part of the 42 curriculum by chchoi*
 
-### Description
+### Descriptions
 * C 언어에서 사용되는 유용한 함수를 직접 구현
 * 구현한 함수의 사용법과 원리의 이해
 

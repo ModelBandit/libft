@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 18:09:52 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 11:53:08 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ char	**ft_split(char const *s, char c)
 	char	*s_ptr;
 	size_t	c_count;
 
-	c_count = 0;
+	c_count = -1;
 	s_ptr = build_set_strtrim(s, c, &c_count);
+	if (s_ptr == NULL)
+		return (NULL);
 	ptr_arr = (char **)malloc((c_count + 1) * sizeof(char *));
 	if (ptr_arr == NULL)
 		return (NULL);
@@ -46,11 +48,14 @@ static char	*build_set_strtrim(char const *s, char c, size_t *c_count)
 	char const	*s_ptr_copy;
 
 	c_str = (char *)ft_calloc(2, sizeof(char));
-	if(c_str == NULL)
-		return NULL;
+	if (c_str == NULL)
+		return (NULL);
 	c_str[0] = c;
 	s_ptr = ft_strtrim(s, (const char *)c_str);
+	s_ptr_copy = NULL;
 	free(c_str);
+	if (s_ptr == NULL)
+		return (NULL);
 	if (ft_strlen(s_ptr) == 0)
 		*c_count = 0;
 	else

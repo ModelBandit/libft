@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:12:37 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 18:07:53 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 09:37:54 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	char	*c_dst;
 	char	*c_src;
 
+	if (dst == NULL || src == NULL)
+		return (NULL);
+	if (ft_strlen(dst) == 0 || ft_strlen(src) == 0 || n < 1)
+		return (dst);
 	c_dst = (char *)dst;
 	c_src = (char *)src;
 	if (c_dst > c_src)

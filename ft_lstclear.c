@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:56:19 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 08:56:04 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 11:11:28 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 static t_list	*get_prev_target(t_list *lst, t_list *target)
 {
-	if ((uintptr_t)(lst->next) == (uintptr_t)NULL)
+	if ((void *)(lst->next) == NULL)
 		return (NULL);
 	else if ((uintptr_t)(lst->next) == (uintptr_t)target)
 		return (lst);

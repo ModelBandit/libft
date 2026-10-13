@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:12:38 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 17:03:54 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 09:04:54 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static size_t	my_strnlen(char *dst, size_t size)
 			return (i);
 		++i;
 	}
-	return (ft_strlen(dst));
+	return (i);
 }
 
 /*
