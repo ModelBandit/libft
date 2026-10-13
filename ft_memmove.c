@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 13:12:37 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 09:37:54 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 14:11:49 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 
 	if (dst == NULL || src == NULL)
 		return (NULL);
-	if (ft_strlen(dst) == 0 || ft_strlen(src) == 0 || n < 1)
+	if (n == 0)
 		return (dst);
 	c_dst = (char *)dst;
 	c_src = (char *)src;
@@ -53,9 +53,7 @@ static void	set_from_tail(char **dst, char **src, size_t len)
 {
 	size_t	i;
 
-	i = len;
-	if (len != 0)
-		i -= 1;
+	i = len - 1;
 	while (i > 0)
 	{
 		(*dst)[i] = (*src)[i];
