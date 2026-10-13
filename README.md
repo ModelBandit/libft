@@ -1,10 +1,10 @@
 ## *This project has been created as part of the 42 curriculum by chchoi*
 
-### Descriptions
+### Description
 * C 언어에서 사용되는 유용한 함수를 직접 구현
 * 구현한 함수의 사용법과 원리의 이해
 
-### Instruction
+### Instructions
 * make all - c파일들을 object파일로 컴파일 한 후 libft.a로 만듬
 * make clean - object 파일을 전부 제거함.
 * make fclean - all 작업을 통해서 생성된 모든 작업 파일을 제거함.
@@ -88,7 +88,7 @@ MSVC의 경우 윈도우 스타일로 불린다함.(나도 안봄)
 - ex1. js의 const가 type* const v와 비슷한 느낌. v의 위치 수정은 안되나 내부 값 수정은 가능
 - ex2. const type* const v로 모든 수정 봉인 가능
 
-# 끝난거
+# 질문사항
 ## Makefile 작성 관련
 - 도대체 NAME이 뭐냐? 파일 이름 쓰라는 얘기냐? 저건 어떤걸 의도해서 적혀있는 거냐.
 

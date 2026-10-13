@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 12:14:09 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 15:01:29 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	**ft_split(char const *s, char c)
 	if (set_arr(ptr_arr, s_ptr, c, c_count) == NULL)
 	{
 		free(ptr_arr);
+		free(s_ptr);
 		return (NULL);
 	}
 	ptr_arr[c_count] = NULL;
