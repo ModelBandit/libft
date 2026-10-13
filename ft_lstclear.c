@@ -6,42 +6,28 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:56:19 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 11:11:28 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 16:00:01 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static t_list	*get_prev_target(t_list *lst, t_list *target);
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*prev;
 	t_list	*cur;
 
 	if (lst == NULL || *lst == NULL || del == NULL)
 		return ;
-	prev = *lst;
-	cur = (*lst)->next;
-	while (prev != NULL)
+	
+	cur = NULL;
+	while ((*lst) != NULL)
 	{
-		cur = ft_lstlast(*lst);
-		prev = get_prev_target(*lst, cur);
+		cur = *lst;
+		(*lst) = (*lst)->next;
 		ft_lstdelone(cur, del);
-		if (prev != NULL)
-			prev->next = NULL;
 	}
-	*lst = NULL;
-}
-
-static t_list	*get_prev_target(t_list *lst, t_list *target)
-{
-	if ((void *)(lst->next) == NULL)
-		return (NULL);
-	else if ((uintptr_t)(lst->next) == (uintptr_t)target)
-		return (lst);
-	return (get_prev_target(lst->next, target));
 }
 
 // int main()
