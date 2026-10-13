@@ -6,13 +6,11 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:56:19 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 16:00:01 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 16:36:03 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
@@ -20,7 +18,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	if (lst == NULL || *lst == NULL || del == NULL)
 		return ;
-	
 	cur = NULL;
 	while ((*lst) != NULL)
 	{
