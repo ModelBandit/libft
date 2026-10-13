@@ -6,11 +6,14 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:55:12 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 15:06:23 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 15:40:37 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static t_list	*ft_lstsafemap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -19,8 +22,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	void	*data;
 
 	cur = lst;
+	if (cur == NULL || f == NULL || del == NULL)
+		return (NULL);
 	data = f(cur->content);
-	if (cur == NULL || data == NULL || f == NULL || del == NULL)
+	if (data == NULL)
 		return (NULL);
 	new_lst = ft_lstnew(data);
 	if (new_lst == NULL)
@@ -30,12 +35,21 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	if (cur->next != NULL)
 	{
-		new_lst->next = ft_lstmap(cur->next, f, del);
-		if (new_lst->next == NULL)
-		{
-			ft_lstdelone(new_lst, del);
-			return (NULL);
-		}
+		new_lst->next = ft_lstsafemap(cur->next, f, del);
+	}
+	return (new_lst);
+}
+
+static t_list	*ft_lstsafemap(t_list *lst, void *(*f)(void *),
+		void (*del)(void *))
+{
+	t_list	*new_lst;
+
+	new_lst = ft_lstmap(lst, f, del);
+	if (new_lst->next == NULL)
+	{
+		ft_lstdelone(new_lst, del);
+		return (NULL);
 	}
 	return (new_lst);
 }
