@@ -6,14 +6,14 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:55:12 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 16:34:28 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 16:51:19 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*ft_lstsafemap(t_list *lst, void *(*f)(void *),
-					void (*del)(void *));
+static t_list	*ft_lstsafemap(t_list *lst, t_list **new_list,
+					void *(*f)(void *), void (*del)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -21,10 +21,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new_lst;
 	void	*data;
 
-	cur = lst;
-	if (cur == NULL || f == NULL || del == NULL)
+	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	data = f(cur->content);
+	cur = NULL;
+	data = f(lst->content);
 	if (data == NULL)
 		return (NULL);
 	new_lst = ft_lstnew(data);
@@ -33,25 +33,26 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		del(data);
 		return (NULL);
 	}
-	if (cur->next != NULL)
+	if (lst->next != NULL)
 	{
-		new_lst->next = ft_lstsafemap(cur, f, del);
-		if (new_lst->next == NULL)
-		{
-			ft_lstdelone(new_lst, del);
+		cur = ft_lstsafemap(lst, &new_lst, f, del);
+		if (cur == NULL)
 			return (NULL);
-		}
+		new_lst->next = cur;
 	}
 	return (new_lst);
 }
 
-static t_list	*ft_lstsafemap(t_list *lst, void *(*f)(void *),
-		void (*del)(void *))
+static t_list	*ft_lstsafemap(t_list *lst, t_list **new_list,
+		void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
 
 	new_lst = ft_lstmap(lst->next, f, del);
 	if (new_lst == NULL)
+	{
+		ft_lstdelone(*new_list, del);
 		return (NULL);
+	}
 	return (new_lst);
 }
