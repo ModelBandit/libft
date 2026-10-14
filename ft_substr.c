@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:47:35 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 17:43:22 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/14 13:07:49 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	str_size;
 	char	*s_part;
 
-	if (start == 0 && len == SIZE_MAX)
-		return (NULL);
 	i = 0;
 	str_size = 0;
 	if ((size_t)start > ft_strlen(s))
@@ -28,6 +26,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str_size = ft_strlen(s) - (size_t)start;
 	else
 		str_size = len;
+	if(str_size == SIZE_MAX)
+		return NULL;
 	s_part = (char *)malloc(str_size + 1);
 	if (s_part == NULL)
 		return (NULL);
