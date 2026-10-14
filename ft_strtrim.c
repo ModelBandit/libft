@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 18:11:06 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 18:07:28 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 18:17:38 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static int	check_tokens(char c, char *tokens)
 
 static char	*my_alloc(size_t ns_start, size_t ns_end)
 {
+	if (ns_end == SIZE_MAX && ns_start == 0)
+		return (NULL);
 	if (ns_end > ns_start)
 		return ((char *)ft_calloc(sizeof(char), ns_end - ns_start + 1));
 	return ((char *)ft_calloc(sizeof(char), 1));

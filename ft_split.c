@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 15:09:44 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/14 11:45:21 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,16 @@ char	**ft_split(char const *s, char c)
 
 	c_count = 0;
 	s_ptr = build_set_strtrim(s, c, &c_count);
-	if (s_ptr == NULL)
+	if (s_ptr == NULL || c_count == SIZE_MAX || (c_count + 1) > SIZE_MAX / sizeof(char*))
+	{
+		free(s_ptr);
 		return (NULL);
+	}
+	if(c_count == SIZE_MAX || (c_count + 1) > SIZE_MAX / sizeof(char*))
+	{
+		free(s_ptr);
+		return (NULL);
+	}
 	ptr_arr = (char **)malloc((c_count + 1) * sizeof(char *));
 	if (ptr_arr == NULL)
 	{

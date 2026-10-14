@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 17:11:19 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 15:04:17 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 17:53:06 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*new_str;
+	size_t	s_len;
 	size_t	i;
 
-	new_str = (char *)ft_calloc(sizeof(char), ft_strlen(s) + 1);
+	s_len = ft_strlen(s);
+	if (s_len == SIZE_MAX)
+		return (NULL);
+	new_str = (char *)ft_calloc(sizeof(char), s_len + 1);
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;

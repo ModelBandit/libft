@@ -6,23 +6,22 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:21:22 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/12 17:44:45 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/13 18:24:19 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*fill_itoa(char *n_str, int len, int n);
+static size_t	size_count(int n);
+static char		*fill_itoa(char *n_str, size_t len, int n);
 
 char	*ft_itoa(int n)
 {
 	char	*n_str;
-	int		str_len;
-	int		num_cpy;
+	size_t	str_len;
 
 	n_str = NULL;
 	str_len = 0;
-	num_cpy = n;
 	if (n == 0)
 	{
 		n_str = ft_calloc(sizeof(char), 2);
@@ -31,17 +30,26 @@ char	*ft_itoa(int n)
 		n_str[0] = '0';
 		return (n_str);
 	}
-	if (n < 0)
-		++str_len;
-	while (num_cpy != 0)
-	{
-		++str_len;
-		num_cpy = num_cpy / 10;
-	}
+	str_len = size_count(n);
 	return (fill_itoa(n_str, str_len, n));
 }
 
-static char	*fill_itoa(char *n_str, int len, int n)
+static size_t	size_count(int n)
+{
+	size_t	str_len;
+
+	str_len = 0;
+	if (n < 0)
+		++str_len;
+	while (n != 0)
+	{
+		++str_len;
+		n = n / 10;
+	}
+	return (str_len);
+}
+
+static char	*fill_itoa(char *n_str, size_t len, int n)
 {
 	n_str = ft_calloc(sizeof(char), len + 1);
 	if (n_str == NULL)
