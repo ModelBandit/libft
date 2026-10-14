@@ -1,7 +1,8 @@
-## *This project has been created as part of the 42 curriculum by chchoi*
+*This project has been created as part of the 42 curriculum by chchoi.*
 
 ### Description
 * C 언어에서 사용되는 유용한 함수를 직접 구현
+* 문자열/메모리 처리, 문자 판별, 동적 할당, 출력, 연결 리스트 기능을 제공
 * 구현한 함수의 사용법과 원리의 이해
 
 ### Instructions
