@@ -6,14 +6,16 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 09:23:33 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/03 15:31:37 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/14 17:57:43 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned int n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	char			*cs;
-	unsigned int	i;
+	char	*cs;
+	size_t	i;
 
 	cs = s;
 	i = 0;
@@ -24,3 +26,7 @@ void	ft_bzero(void *s, unsigned int n)
 		++i;
 	}
 }
+
+/*
+unsigned int get pass
+*/

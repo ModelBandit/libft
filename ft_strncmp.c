@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 15:27:27 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/06 11:51:12 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/14 17:49:39 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char			*ps1;
-	char			*ps2;
-	unsigned long	i;
+	char	*ps1;
+	char	*ps2;
+	size_t	i;
 
 	if (n == 0)
 		return (0);

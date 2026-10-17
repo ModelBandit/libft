@@ -6,61 +6,39 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 18:11:06 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/13 18:17:38 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/17 15:27:08 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	unsign_len(char const *s1);
-static int	check_tokens(char c, char *tokens);
 static char	*my_alloc(size_t ns_start, size_t ns_end);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*new_str;
-	size_t	i;
 	size_t	ns_start;
 	size_t	ns_end;
 
-	i = 0;
-	while (s1[i] != '\0' && check_tokens(s1[i], (char *)set))
-		++i;
-	ns_start = i;
-	i = unsign_len(s1);
-	while (ns_start < i + 1 && check_tokens(s1[i], (char *)set))
-		--i;
-	if (i == 0)
-		ns_end = i;
-	else
-		ns_end = i + 1;
-	i = 0;
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	if (ft_strlen(s1) == 0 || ft_strlen(set) == 0)
+		return (ft_strdup(s1));
+
+	ns_start = 0;
+	ns_end = ft_strlen(s1);
+
+	while (ns_start < ns_end && ft_strchr(set, s1[ns_start]) != NULL)
+		++ns_start;
+	while (ns_start < ns_end && ft_strchr(set, s1[ns_end - 1]) != NULL)
+		--ns_end;
+
 	new_str = my_alloc(ns_start, ns_end);
 	if (new_str == NULL)
 		return (NULL);
-	ft_strlcpy(new_str, &(s1[ns_start + i]), ns_end - ns_start + 1);
+		
+	ft_strlcpy(new_str, &(s1[ns_start]), ns_end - ns_start + 1);
 	return (new_str);
-}
-
-static int	unsign_len(char const *s1)
-{
-	size_t	i;
-
-	i = ft_strlen(s1);
-	if (i != 0)
-		i -= 1;
-	return (i);
-}
-
-static int	check_tokens(char c, char *tokens)
-{
-	while (*tokens != '\0')
-	{
-		if (c == *tokens)
-			return (1);
-		++tokens;
-	}
-	return (0);
 }
 
 static char	*my_alloc(size_t ns_start, size_t ns_end)
@@ -72,11 +50,15 @@ static char	*my_alloc(size_t ns_start, size_t ns_end)
 	return ((char *)ft_calloc(sizeof(char), 1));
 }
 
-// int main()
-// {
-//     char *s = "   xxx   xxx";
-//     char *set = " x";
-//     char *new_str = ft_strtrim(s, set);
+// #include <stdio.h>
 
-//     free(new_str);
+// int	main(void)
+// {
+// 	char *s = "  xxx  xxx  ";
+// 	char *set = " ";
+// 	char *new_str = ft_strtrim(s, set);
+
+// 	printf("%s\n", new_str);
+
+// 	free(new_str);
 // }

@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 15:35:30 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/14 12:53:19 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/14 18:13:10 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,8 @@ static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
 
 // int	main(void)
 // {
-// 	char s[] = "  tripouille  42  ";
-// 	char **tab = ft_split(s, ' ');
+// 	char s[] = "Z";
+// 	char **tab = ft_split(s, 'a');
 // 	int i = 0;
 
 // 	while (tab[i] != NULL)
@@ -156,6 +156,10 @@ static char	*fill_str(char **s_arr, char const *s, size_t cur_count,
 // 	free(tab[i]);
 // 	free(tab);
 // }
+
+/*
+make touble ft_strtrim("Z", "a");
+*/
 
 /*
 

@@ -5,4 +5,4 @@ main.c
 *.o
 *.a
 *.tar
-libftTester/
+libftTester*/

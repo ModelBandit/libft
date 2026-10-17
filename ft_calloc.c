@@ -6,7 +6,7 @@
 /*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 11:46:55 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/14 12:53:03 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/17 15:22:40 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*c_ptr;
-	char	*c_copy;
-	size_t	i;
 
 	c_ptr = NULL;
-	c_copy = NULL;
-	i = 0;
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
 	else if (nmemb > SIZE_MAX / size)
@@ -28,13 +24,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	c_ptr = (char *)malloc(nmemb * size);
 	if (c_ptr == NULL)
 		return (NULL);
-	c_copy = c_ptr;
-	i = 0;
-	while (i < nmemb * size)
-	{
-		c_copy[i] = 0;
-		++i;
-	}
+
+	ft_bzero(c_ptr, nmemb * size);
+	
 	return (c_ptr);
 }
 
