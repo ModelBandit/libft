@@ -6,7 +6,7 @@
 /*   By: chchoi <chchoi@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 11:46:55 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/18 10:29:46 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/18 13:35:29 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	c_ptr = (char *)malloc(nmemb * size);
 	if (c_ptr == NULL)
 		return (NULL);
-
 	ft_bzero(c_ptr, nmemb * size);
-	
 	return (c_ptr);
 }
 
