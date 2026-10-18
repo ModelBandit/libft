@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chchoi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: chchoi <chchoi@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 18:11:06 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/17 15:27:08 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/18 10:32:37 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (ns_start < ns_end && ft_strchr(set, s1[ns_end - 1]) != NULL)
 		--ns_end;
 
-	new_str = my_alloc(ns_start, ns_end);
+	new_str = (char *)ft_calloc(sizeof(char), ns_end - ns_start + 1);
 	if (new_str == NULL)
 		return (NULL);
 		
@@ -45,9 +45,7 @@ static char	*my_alloc(size_t ns_start, size_t ns_end)
 {
 	if (ns_end == SIZE_MAX && ns_start == 0)
 		return (NULL);
-	if (ns_end > ns_start)
-		return ((char *)ft_calloc(sizeof(char), ns_end - ns_start + 1));
-	return ((char *)ft_calloc(sizeof(char), 1));
+	return ((char *)ft_calloc(sizeof(char), ns_end - ns_start + 1));
 }
 
 // #include <stdio.h>
