@@ -6,7 +6,7 @@
 /*   By: chchoi <chchoi@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 15:56:37 by chchoi            #+#    #+#             */
-/*   Updated: 2026/10/19 13:44:08 by chchoi           ###   ########.fr       */
+/*   Updated: 2026/10/19 16:17:44 by chchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	t_list	*cur;
 
-	if(lst == NULL || *lst == NULL || new == NULL)
-		return;
-
+	if (lst == NULL || *lst == NULL || new == NULL)
+		return ;
+		
 	cur = *lst;
 	if (cur == NULL)
 		*lst = new;
